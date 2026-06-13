@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="refresh" content="3">
+    <title>AI Smart Firewall</title>
+
+    <style>
+
+        body{
+            background:#0d1117;
+            color:white;
+            font-family:Arial;
+            padding:20px;
+        }
+
+        h1{
+            color:#00ff99;
+        }
+
+        .stats{
+            display:flex;
+            gap:20px;
+            margin-bottom:20px;
+        }
+
+        .card{
+            background:#161b22;
+            padding:20px;
+            border-radius:10px;
+            width:220px;
+            box-shadow:0 0 10px rgba(0,255,153,0.2);
+        }
+
+        .number{
+            font-size:35px;
+            font-weight:bold;
+            margin-top:10px;
+        }
+
+        .log{
+            background:#161b22;
+            padding:10px;
+            margin:10px 0;
+            border-left:4px solid #00ff99;
+        }
+
+        .threat{
+            border-left:4px solid red;
+            color:#ff7b72;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <h1>AI Smart Firewall Dashboard</h1>
+
+    <div class="stats">
+
+        <div class="card">
+            <h2>Total Threats</h2>
+            <div class="number">{{ threats }}</div>
+        </div>
+
+        <div class="card">
+            <h2>Blocked IPs</h2>
+            <div class="number">{{ blocked }}</div>
+        </div>
+
+    </div>
+
+    <h2>Firewall Logs</h2>
+
+    {% for log in logs %}
+
+        {% if "Suspicious" in log %}
+
+            <div class="log threat">
+                {{ log }}
+            </div>
+
+        {% else %}
+
+            <div class="log">
+                {{ log }}
+            </div>
+
+        {% endif %}
+
+    {% endfor %}
+
+</body>
+
+</html>
